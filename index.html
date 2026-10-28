@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S2000 Bridge</title>
+<meta name="description" content="S2000 Bridge sends sliced programs from your Mac straight into an Akai S2000 sampler over SCSI, using a Raspberry Pi and PiSCSI. Free download.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  /* ============ EDIT THESE LINKS ============ */
+  /* Download: https://github.com/michaelsanois/s2000-bridge/releases/latest */
+  /* Donate:   https://ko-fi.com/YOUR-KOFI-NAME */
+  /* ========================================== */
+
+  :root {
+    --bg: #1c1d1a;
+    --panel: #26271f;
+    --panel-edge: #3a3b31;
+    --text: #ecebe2;
+    --muted: #a7a596;
+    --lcd: #b7d36b;
+    --lcd-bg: #1f2a12;
+    --accent: #e8542c;
+    --accent-ink: #fff;
+    --radius: 10px;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 17px/1.6 Inter, system-ui, -apple-system, sans-serif;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+
+  header { padding: 56px 0 32px; }
+  .lcd {
+    display: inline-block;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    letter-spacing: .08em;
+    color: var(--lcd);
+    background: var(--lcd-bg);
+    border: 1px solid #34431f;
+    border-radius: 4px;
+    padding: 6px 10px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(40px, 9vw, 64px);
+    line-height: 1;
+    margin: 0 0 16px;
+    font-weight: 800;
+    letter-spacing: -.02em;
+  }
+  .tagline { font-size: 20px; color: var(--muted); margin: 0 0 32px; max-width: 34ch; }
+
+  .buttons { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 22px;
+    border-radius: var(--radius);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); }
+  .btn-primary:hover { filter: brightness(1.08); }
+  .btn-ghost { border: 1px solid var(--panel-edge); color: var(--text); }
+  .btn-ghost:hover { background: var(--panel); }
+  .small { font-size: 14px; color: var(--muted); margin-top: 12px; }
+
+  section { padding: 28px 0; border-top: 1px solid var(--panel-edge); }
+  h2 {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 14px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--lcd);
+    margin: 0 0 16px;
+  }
+
+  .chain {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+    font-family: "IBM Plex Mono", monospace; font-size: 14px;
+  }
+  .chain span.box {
+    background: var(--panel); border: 1px solid var(--panel-edge);
+    border-radius: 6px; padding: 8px 12px;
+  }
+  .chain span.arrow { color: var(--accent); }
+
+  ul.features { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+  ul.features li {
+    background: var(--panel); border: 1px solid var(--panel-edge);
+    border-radius: var(--radius); padding: 14px 16px;
+  }
+  ul.features strong { display: block; }
+  ul.features span { color: var(--muted); font-size: 15px; }
+
+  ul.reqs { margin: 0; padding-left: 20px; }
+  ul.reqs li { margin-bottom: 6px; }
+
+  .donate {
+    background: var(--panel); border: 1px solid var(--panel-edge);
+    border-radius: var(--radius); padding: 22px;
+  }
+  .donate p { margin: 0 0 16px; }
+
+  footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--panel-edge); }
+  footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="lcd">PROG SEND ▸ S2000 · BETA</div>
+      <h1>S2000 Bridge</h1>
+      <p class="tagline">Send sliced programs from your Mac straight into your Akai S2000. No disk images, no floppies.</p>
+      <div class="buttons">
+        <a class="btn btn-primary" href="https://github.com/michaelsanois/s2000-bridge/releases/latest">⬇ Download for Mac (free)</a>
+        <a class="btn btn-ghost" href="https://ko-fi.com/YOUR-KOFI-NAME">☕ Support the project</a>
+      </div>
+      <p class="small">AUv2 plugin + standalone app · Beta release · free to use · donations welcome but never required</p>
+    </header>
+
+    <section>
+      <h2>How it works</h2>
+      <div class="chain" aria-label="Mac to Raspberry Pi to Akai S2000">
+        <span class="box">Mac</span><span class="arrow">→</span>
+        <span class="box">Raspberry Pi + PiSCSI</span><span class="arrow">→</span>
+        <span class="box">Akai S2000</span>
+      </div>
+      <p>Slice your audio on the Mac, hit SEND, and S2000 Bridge pushes the program over SCSI directly into the sampler's memory, ready to play.</p>
+    </section>
+
+    <section>
+      <h2>Features</h2>
+      <ul class="features">
+        <li><strong>Direct SCSI send</strong><span>Programs go straight into sampler RAM rather than through disk images.</span></li>
+        <li><strong>Slice on your Mac</strong><span>Chop breaks and loops on a big screen, then send them across.</span></li>
+        <li><strong>Manage your libraries</strong><span>Keep your sample and program libraries organised on your Mac.</span></li>
+        <li><strong>Edit S2000 programs on your Mac</strong><span>Pull programs from the sampler and tweak them on screen instead of the tiny LCD.</span></li>
+        <li><strong>AU plugin or standalone app</strong><span>Run it as an Audio Unit (AUv2) inside your DAW, or on its own as a standalone app.</span></li>
+        <li><strong>Automatable parameters via SysEx</strong><span>Control S2000 parameters over SysEx and automate them from your DAW.</span></li>
+        <li><strong>Built-in diagnostics</strong><span>Check MIDI and SysEx status and copy a diagnostics report in one click.</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>You'll need</h2>
+      <ul class="reqs">
+        <li>A Mac running macOS</li>
+        <li>Raspberry Pi 3 with a PiSCSI board (tested with RaSCSI v2.3B)</li>
+        <li>An Akai S2000 sampler with a SCSI connection</li>
+        <li>A MIDI interface between the Mac and the S2000</li>
+        <li><em>Optional:</em> <a href="https://github.com/michaelsanois/Akai-S2000-Rosetta-OS" style="color:var(--lcd)">Rosetta OS (S2000 Bridge edition)</a> on the S2000 for recording and onboard FX. Based on <a href="https://github.com/yuyoi/Akai-S2000-Rosetta-OS" style="color:var(--lcd)">Rosetta OS</a> by JunkSmithWizard, MIT licence.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Support</h2>
+      <div class="donate">
+        <p>S2000 Bridge is free and always will be. If it's brought your S2000 back to life, a small donation helps keep development going.</p>
+        <a class="btn btn-primary" href="https://ko-fi.com/YOUR-KOFI-NAME">☕ Buy me a coffee on Ko-fi</a>
+      </div>
+    </section>
+
+    <footer>
+      <p>S2000 Bridge is an independent project and is not affiliated with or endorsed by Akai. Akai and S2000 are used only to describe compatibility.</p>
+      <p><a href="https://github.com/michaelsanois/s2000-bridge">Source &amp; issues on GitHub</a></p>
+    </footer>
+  </div>
+</body>
+</html>
