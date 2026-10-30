@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>S2000 Bridge</title>
-<meta name="description" content="S2000 Bridge sends sliced programs from your Mac straight into an Akai S2000 sampler over SCSI, using a Raspberry Pi and PiSCSI. Free download.">
+<meta name="description" content="S2000 Bridge sends sliced programs from your Mac or Linux PC straight into an Akai S2000 sampler over SCSI, using a Raspberry Pi and PiSCSI. Free download.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -119,32 +119,33 @@
     <header>
       <div class="lcd">PROG SEND ▸ S2000 · v2.0.0</div>
       <h1>S2000 Bridge</h1>
-      <p class="tagline">Send sliced programs from your Mac straight into your Akai S2000. No disk images, no floppies.</p>
+      <p class="tagline">Send sliced programs from your Mac or Linux PC straight into your Akai S2000. No disk images, no floppies.</p>
       <div class="buttons">
         <a class="btn btn-primary" href="https://github.com/michaelsanois/s2000-bridge/releases/latest">⬇ Download for Mac (free)</a>
+        <a class="btn btn-primary" href="https://github.com/michaelsanois/s2000-bridge/releases/latest">⬇ Download for Linux (free)</a>
         <a class="btn btn-ghost" href="https://ko-fi.com/michaelsanois">☕ Support the project</a>
       </div>
-      <p class="small">Version 2.0.0 · AUv2 plugin + standalone app · free to use · donations welcome but never required</p>
+      <p class="small">Version 2.0.0 · Mac: AUv2 plugin + standalone app · Linux (new, beta): VST3 + LV2 plugins + standalone app · free to use · donations welcome but never required</p>
     </header>
 
     <section>
       <h2>How it works</h2>
-      <div class="chain" aria-label="Mac to Raspberry Pi to Akai S2000">
-        <span class="box">Mac</span><span class="arrow">→</span>
+      <div class="chain" aria-label="Mac or Linux PC to Raspberry Pi to Akai S2000">
+        <span class="box">Mac / Linux PC</span><span class="arrow">→</span>
         <span class="box">Raspberry Pi + PiSCSI</span><span class="arrow">→</span>
         <span class="box">Akai S2000</span>
       </div>
-      <p>Slice your audio on the Mac, hit SEND, and S2000 Bridge pushes the program over SCSI directly into the sampler's memory, ready to play.</p>
+      <p>Slice your audio on your computer, hit SEND, and S2000 Bridge pushes the program over SCSI directly into the sampler's memory, ready to play.</p>
     </section>
 
     <section>
       <h2>Features</h2>
       <ul class="features">
         <li><strong>Direct SCSI send</strong><span>Programs go straight into sampler RAM rather than through disk images.</span></li>
-        <li><strong>Slice on your Mac</strong><span>Chop breaks and loops on a big screen, then send them across.</span></li>
-        <li><strong>Manage your libraries</strong><span>Keep your sample and program libraries organised on your Mac.</span></li>
-        <li><strong>Edit S2000 programs on your Mac</strong><span>Pull programs from the sampler and tweak them on screen instead of the tiny LCD.</span></li>
-        <li><strong>AU plugin or standalone app</strong><span>Run it as an Audio Unit (AUv2) inside your DAW, or on its own as a standalone app.</span></li>
+        <li><strong>Slice on your computer</strong><span>Chop breaks and loops on a big screen, then send them across.</span></li>
+        <li><strong>Manage your libraries</strong><span>Keep your sample and program libraries organised on your computer.</span></li>
+        <li><strong>Edit S2000 programs on screen</strong><span>Pull programs from the sampler and tweak them on screen instead of the tiny LCD.</span></li>
+        <li><strong>Plugin or standalone app</strong><span>Run it inside your DAW (AUv2 on Mac, VST3 or LV2 on Linux), or on its own as a standalone app.</span></li>
         <li><strong>Automatable parameters via SysEx</strong><span>Control S2000 parameters over SysEx and automate them from your DAW.</span></li>
         <li><strong>Built-in diagnostics</strong><span>Check MIDI and SysEx status and copy a diagnostics report in one click.</span></li>
       </ul>
@@ -153,10 +154,10 @@
     <section>
       <h2>You'll need</h2>
       <ul class="reqs">
-        <li>A Mac running macOS</li>
+        <li>A Mac running macOS 11 Big Sur or later (Apple silicon or Intel), <em>or</em> a 64-bit Intel/AMD Linux PC. The Linux version is new and not yet tested with real hardware, and it can't open REX (.rx2) files.</li>
         <li>Raspberry Pi 3 with a PiSCSI board (tested with RaSCSI v2.3B)</li>
         <li>An Akai S2000 sampler with a SCSI connection</li>
-        <li>A MIDI interface between the Mac and the S2000</li>
+        <li>A MIDI interface between your computer and the S2000</li>
         <li><em>Optional:</em> <a href="https://github.com/michaelsanois/Akai-S2000-Rosetta-OS" style="color:var(--lcd)">Rosetta OS (S2000 Bridge edition)</a> on the S2000 for recording and onboard FX. Based on <a href="https://github.com/yuyoi/Akai-S2000-Rosetta-OS" style="color:var(--lcd)">Rosetta OS</a> by JunkSmithWizard, MIT licence.</li>
       </ul>
     </section>
